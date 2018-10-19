@@ -1,0 +1,36 @@
+#项目端口,项目初始路径，服务器编码设置
+server:
+  port: 8081
+  context-path: /chw/vue
+  tomcat:
+    uri-encoding: UTF-8
+# spring 数据库源设置
+spring:
+  datasource:
+    name: mysql
+    url: jdbc:mysql://localhost:3306/vue?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+  http:
+    encoding:
+      charset: utf-8
+      force: true
+      enabled: true
+    messages:
+      encoding: UTF-8
+    #热部署开关
+  devtools:
+    restart:
+      enabled: true
+      exclude: WEB-INF/*
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mybatis/mappers/*.xml,mybatis/mappers/manage_mappers/*.xml,mybatis/mappers/driver_mappers/*.xml,mybatis/mappers/servicer_mappers/*.xml
+  type-aliases-package: com.lvjia.carbodyad.model.pojo
+  configuration:
+    map-underscore-to-camel-case: true # 下划线字段自动转化为驼峰字段
+logging:
+  config: classpath:logback.xml
